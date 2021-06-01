@@ -10,16 +10,18 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { SlottedSelectItem } from './VSlottedSelect.vue';
 import VIcon from './VIcon.vue';
 
 @Component({ components: { VIcon } })
-export default class MediumSelectorItem extends Vue {
+export default class VSlottedSelectItem extends Vue {
   @Prop({ required: true }) readonly item!: SlottedSelectItem;
   @Prop({ default: false }) readonly hasChevron!: boolean;
 }
 </script>
+
 <style lang="scss" scoped>
 </style>

@@ -10,11 +10,12 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 
 @Component
-export default class CardDock extends Vue {
+export default class VCardDock extends Vue {
   hasRightCol() {
     return !!this.$slots.rightCol || !!this.$scopedSlots.rightCol;
   }

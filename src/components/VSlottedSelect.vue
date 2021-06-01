@@ -29,6 +29,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import ClickOutside from '../directives/ClickOutside';
@@ -76,6 +77,7 @@ export default class VSlottedSelect extends Vue {
   }
 }
 </script>
+
 <style lang="scss" scoped>
 @import "@/css/vue";
 .slotted-select {

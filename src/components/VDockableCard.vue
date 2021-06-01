@@ -16,11 +16,12 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
 @Component
-export default class VCard extends Vue {
+export default class VDockableCard extends Vue {
   @Prop({ default: () => 'Titolo' }) readonly title!: string;
   @Prop({ default: true }) readonly showHeader!: boolean;
 
@@ -30,14 +31,15 @@ export default class VCard extends Vue {
 }
 
 </script>
+
 <style lang="scss" scoped>
 @import '@/css/vue';
 .v-dockable-card {
   background-color: $white;
-  border: 1px solid $athens-gray;
+  border: 1px solid $gray-300;
   &-header {
     padding: 1rem 0.5rem;
-    border-bottom: 1px solid $athens-gray;
+    border-bottom: 1px solid $gray-300;
     h6 {
       margin: 0;
     }
@@ -46,7 +48,7 @@ export default class VCard extends Vue {
     padding: 1rem 0.5rem;
   }
   &-footer {
-    border-top: 1px solid $athens-gray;
+    border-top: 1px solid $gray-300;
     padding: 1rem 0.5rem;
   }
 }
