@@ -748,6 +748,129 @@
                 ></v-modal-video>
               </div>
               <pre><code>&lt;v-modal-video title='title' :sources="[urls]" size="xl"/&gt;</code></pre>
+              <hr />
+            </div>
+            <div id="VDockableCard">
+              <h4>VDockableCard</h4>
+              <div class="mb-3 d-flex align-items-center justify-content-between">
+                <v-dockable-card></v-dockable-card>
+              </div>
+              <pre><code>&lt;v-dockable-card&gt;&lt;/v-dockable-card&gt;</code></pre>
+              <h5>VDockableCard with title, body slot and footer slot</h5>
+              <div class="mb-3 d-flex align-items-center justify-content-between">
+                <v-dockable-card title="My title">
+                  <template v-slot:body>
+                    <p class="m-0">I am a body slot</p>
+                  </template>
+                  <template v-slot:footer>
+                    <p class="m-0">I am a footer slot</p>
+                  </template>
+                </v-dockable-card>
+              </div>
+              <pre><code>&lt;v-dockable-card title="My title" &gt;&lt;/v-dockable-card&gt;</code></pre>
+              <h5>VDockableCard with header slot, body slot and footer slot</h5>
+              <div class="mb-3 d-flex align-items-center justify-content-between">
+                <v-dockable-card title="My title">
+                  <template v-slot:header>
+                    <h3>Larger header</h3>
+                  </template>
+                  <template v-slot:body>
+                    <p class="m-0">I am a body slot</p>
+                  </template>
+                  <template v-slot:footer>
+                    <p class="m-0">I am a footer slot</p>
+                  </template>
+                </v-dockable-card>
+              </div>
+              <pre><code>&lt;v-dockable-card&gt;&hellip;&lt;/v-dockable-card&gt;</code></pre>
+              <h5>Headless VDockableCard</h5>
+              <div class="mb-3 d-flex align-items-center justify-content-between">
+                <v-dockable-card :showHeader="false">
+                </v-dockable-card>
+              </div>
+              <pre><code>&lt;v-dockable-card :showHeader="false"&gt;&lt;/v-dockable-card&gt;</code></pre>
+              <hr />
+            </div>
+            <div id="VCardDock">
+              <h4>VCardDock</h4>
+              <h5>Single column (slot leftCol)</h5>
+              <div class="mb-3">
+                <v-card-dock>
+                  <template v-slot:leftCol>
+                    <v-dockable-card></v-dockable-card>
+                  </template>
+                </v-card-dock>
+              </div>
+              <pre><code>&lt;v-card-dock&gt;&lt;template v-slot:leftCol&gt;&hellip;&lt;/template&gt;&lt;/v-card-dock&gt;</code></pre>
+              <h5>Two columns (also with slot rightCol)</h5>
+              <div class="mb-3">
+                <v-card-dock>
+                  <template v-slot:leftCol>
+                    <v-dockable-card class="mb-3">
+                      <template v-slot:body>
+                        <p>A lot of text here <br/> But this won't affect the right column</p>
+                      </template>
+                    </v-dockable-card>
+                    <v-dockable-card class="mb-3">
+                      <template v-slot:body>
+                        <p>... and another lot of text here too</p>
+                      </template>
+                    </v-dockable-card>
+                  </template>
+                  <template v-slot:rightCol>
+                    <v-dockable-card class="mb-3"></v-dockable-card>
+                    <v-dockable-card class="mb-3"></v-dockable-card>
+                  </template>
+                </v-card-dock>
+              </div>
+              <pre><code>&lt;v-card-dock&gt;&lt;template v-slot:leftCol&gt;&hellip;&lt;/template&gt;&lt;template v-slot:rightCol&gt;&hellip;&lt;/template&gt;&lt;/v-card-dock&gt;</code></pre>
+              <hr/>
+            </div>
+            <div id="VSlottedSelect">
+              <h4>VSlottedSelect</h4>
+              <div class="mb-3 d-flex align-items-center justify-content-between">
+                <v-slotted-select label="My awesome label" :selected="slottedModel" :items="slottedItems">
+                  <template v-slot:selected="{ selected }">
+                    <v-slotted-select-item :item="selected" :hasChevron="true"/>
+                  </template>
+                  <template v-slot:item="{ item }">
+                    <v-slotted-select-item :item="item" />
+                  </template>
+                </v-slotted-select>
+              </div>
+              <pre><code>&lt;v-slotted-select label="My awesome label" :selected="..." :items="..."&gt;&lt;template v-slot:selected="{ selected }"&gt;&hellip;&lt;/template&gt;&lt;template v-slot:item="{ item }"&gt;&lt;/v-slotted-select&gt;</code></pre>
+              <h5>VSlottedSelect with groups (items template uses slotted-select-item component)</h5>
+              <div class="mb-3 d-flex align-items-center justify-content-between">
+                <v-slotted-select :selected="slottedModel" :groups="slottedGroups">
+                  <template v-slot:selected="{ selected }">
+                    <v-slotted-select-item :item="selected" :hasChevron="true"/>
+                  </template>
+                  <template v-slot:group-header="{ group }">
+                    <div class="d-flex align-items-center">
+                      <span class="text-muted group-label px-1">{{group.name}}</span>
+                    </div>
+                  </template>
+                  <template v-slot:item="{ item }">
+                    <v-slotted-select-item :item="item" />
+                  </template>
+                </v-slotted-select>
+              </div>
+              <pre><code>&lt;v-slotted-select :selected="..." :groups="..."&gt;&lt;template v-slot:selected="{ selected }"&gt;&hellip;&lt;/template&gt;&lt;template v-slot:group-header="{ group }"&gt;&hellip;&lt;/template&gt;&lt;template v-slot:item="{ item }"&gt;&hellip;&lt;/template&gt;&lt;/v-slotted-select&gt;</code></pre>
+              <h5>VSlottedSelect with groups templates are simple p tags...</h5>
+              <div class="mb-3 d-flex align-items-center justify-content-between">
+                <v-slotted-select :selected="slottedModel" :groups="slottedGroups">
+                  <template v-slot:selected="{ selected }">
+                    <p class="m-0">{{selected.text}}</p>
+                  </template>
+                  <template v-slot:group-header="{ group }">
+                    <p class="m-0">{{group.name}}</p>
+                  </template>
+                  <template v-slot:item="{ item }">
+                    <p class="m-0">{{item.text}}</p>
+                  </template>
+                </v-slotted-select>
+              </div>
+              <pre><code>&lt;v-slotted-select :selected="..." :groups="..."&gt;&lt;template v-slot:selected="{ selected }"&gt;&hellip;&lt;/template&gt;&lt;template v-slot:group-header="{ group }"&gt;&hellip;&lt;/template&gt;&lt;template v-slot:item="{ item }"&gt;&hellip;&lt;/template&gt;&lt;/v-slotted-select&gt;</code></pre>
             </div>
           </div>
         </div>
@@ -843,9 +966,10 @@
                 ><a href="#VAudio">VAudio</a>
               </li>
               <li class="list-group-item"><a href="#VVideo">VVideo</a></li>
-              <li class="list-group-item">
-                <a href="#VModalVideo">VModalVideo</a>
-              </li>
+              <li class="list-group-item"><a href="#VModalVideo">VModalVideo</a></li>
+              <li class="list-group-item"><a href="#VDockableCard">VDockableCard</a></li>
+              <li class="list-group-item"><a href="#VCardDock">VCardDock</a></li>
+              <li class="list-group-item"><a href="#VSlottedSelect">VSlottedSelect</a></li>
             </ul>
           </div>
         </div>
@@ -884,6 +1008,10 @@ import VComparisonGroupSelect from '../components/VComparisonGroupSelect.vue';
 import VAudio from '../components/VAudio.vue';
 import VVideo from '../components/VVideo.vue';
 import VModalVideo from '../components/VModalVideo.vue';
+import VDockableCard from '../components/VDockableCard.vue';
+import VCardDock from '../components/VCardDock.vue';
+import VSlottedSelect, { SlottedSelectGroup, SlottedSelectItem } from '../components/VSlottedSelect.vue';
+import VSlottedSelectItem from '../components/VSlottedSelectItem.vue';
 import VSplitDateSelect from '@/components/VSplitDateSelect.vue';
 
 import { Component, Vue } from 'vue-property-decorator';
@@ -918,7 +1046,11 @@ import { Component, Vue } from 'vue-property-decorator';
     VSplitDateSelect,
     VAudio,
     VVideo,
-    VModalVideo
+    VModalVideo,
+    VDockableCard,
+    VCardDock,
+    VSlottedSelect,
+    VSlottedSelectItem
   }
 })
 export default class Styleguide extends Vue {
@@ -1095,6 +1227,48 @@ export default class Styleguide extends Vue {
 
   gItems: EntryGroupItem[] = [];
   private listGroupSelectedItem = { id: null, label: null };
+
+  slottedModel: SlottedSelectItem = {
+    id: '-',
+    text: 'Select me',
+    icon: 'play',
+    additional: 'nothing serious'
+  };
+
+  slottedItems: SlottedSelectItem[] = [
+    {
+      id: '-',
+      text: 'Select me',
+      icon: 'play',
+      additional: 'nothing serious'
+    },
+    {
+      id: 'a',
+      icon: 'audio',
+      text: 'Audio',
+      additional: 'specimen'
+    }
+  ];
+
+  slottedGroups: SlottedSelectGroup[] = [
+    {
+      id: 'g-a',
+      name: 'GROUP A',
+      items: this.slottedItems
+    },
+    {
+      id: 'g-b',
+      name: 'GROUP B',
+      items: [
+        {
+          id: 'c',
+          icon: 'timer',
+          text: 'I don\'t have additionals',
+          additional: ''
+        }
+      ]
+    }
+  ];
 
   public loadGroups(payload: any): Promise<EntryGroupItem[]> {
     return Promise.resolve(this.gItems);
